@@ -1,6 +1,18 @@
 # Homography-Panoramic-Perception
 
 This project implements augmented reality techniques using planar homographies. It includes functions for feature detection, matching, and image warping to create augmented reality effects.
+## Implementation:
+
+For a panoramic view enhancement, here are few examples of implementation:
+![Example Image](images/cliff_pano.png "A Cliff expanded from just 80 degrees to almost 180 degrees of Viewing angle")
+![Example Image](images/cmu_pano.png "Expanded view of Carnegie Mellon University")
+![Example Image](images/mount_pano.png)
+
+And the preliminary matching for this image occurs like this:
+![Example Image](images/mount_match.png)
+
+By making adjustments to the way the program handles rotations in the image, rotation invariance can be handled
+![Example Image](images/rot_match.png)
 
 ## Overview
 The system uses a combination of feature detection, description, and matching algorithms to identify corresponding points between images. These correspondences are then used to compute homographies, which allow for the warping of one image onto another.
@@ -38,5 +50,5 @@ The project implements functions to compute homographies between images:
 - **`compositeH`**: Creates a composite image by warping one image onto another using a homography.
 
 ## Usage
-For a panoramic view enhancement, here are few examples of implementation:
-![Example Image](images/cliff_pano.png)
+- Make sure all requirements are installed in your system
+- Run **`main.py`** segmentwise depending on the use case
