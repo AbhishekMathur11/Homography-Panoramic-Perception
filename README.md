@@ -1,36 +1,42 @@
 # Homography-Panoramic-Perception
 
-## Overview
+This project implements augmented reality techniques using planar homographies. It includes functions for feature detection, matching, and image warping to create augmented reality effects.
 
-This project implements augmented reality using planar homographies. It includes feature detection, matching, and homography computation to overlay virtual objects onto real-world images.
+## Overview
+The system uses a combination of feature detection, description, and matching algorithms to identify corresponding points between images. These correspondences are then used to compute homographies, which allow for the warping of one image onto another.
 
 ## Key Components
 
-### Feature Detection and Matching
+### Feature Detection
+The project uses the **FAST** (Features from Accelerated Segment Test) corner detector for identifying interest points in images. FAST is computationally efficient compared to traditional methods like the Harris corner detector:
+- It examines a circular set of 16 pixels around each point.
+- A corner is detected if at least 9 contiguous pixels are significantly brighter or darker than the central pixel.
+- This approach is much faster than calculating gradients and matrices, making it suitable for real-time applications.
 
-- Implements FAST corner detection
-- Uses BRIEF descriptors for feature matching
-- Includes functions for:
-  - Corner detection
-  - Descriptor computation
-  - Feature matching
+### Feature Description
+**BRIEF** (Binary Robust Independent Elementary Features) is used for describing the detected features:
+- BRIEF is a binary descriptor, representing features as a string of 1s and 0s.
+- It randomly samples pairs of pixels in an image patch and performs simple intensity comparisons.
+- The resulting descriptor is compact and efficient to compute and match.
+
+### Feature Matching
+Matching is performed using the **Hamming distance** and **Nearest Neighbor algorithm**:
+- The Hamming distance measures the number of differing bits between two binary strings.
+- Nearest Neighbor matching finds the descriptor in the second image with the smallest Hamming distance to each descriptor in the first image.
+- This combination allows for rapid matching, making it suitable for real-time applications.
 
 ### Homography Computation
+The project implements functions to compute homographies between images:
+- **Direct Linear Transform (DLT)** is used to solve for the homography matrix.
+- **RANSAC (Random Sample Consensus)** is employed to robustly estimate homographies in the presence of outliers.
 
-- Implements Direct Linear Transform (DLT) for homography estimation
-- Includes RANSAC for robust estimation
+## Main Functions
+- **`matchPics`**: Detects features, computes descriptors, and matches them across two images.
+- **`computeH`**: Computes the homography between two sets of corresponding points.
+- **`computeH_norm`**: Computes the homography using normalization for improved numerical stability.
+- **`computeH_ransac`**: Estimates the homography robustly using RANSAC.
+- **`compositeH`**: Creates a composite image by warping one image onto another using a homography.
 
-### AR Overlay
-
-- Applies computed homography to overlay virtual objects on input images
-
-## Results
-
-![Feature Matching Result](path/to/feature_matching_result.png)
-
-*Figure 1: Feature matching between two images*
-
-![AR Overlay Result](path/to/ar_overlay_result.png)
-
-*Figure 2: Virtual object overlaid on input image*
-
+## Usage
+For a panoramic view enhancement, here are few examples of implementation:
+![Example Image](images/cliff_pano.png)
