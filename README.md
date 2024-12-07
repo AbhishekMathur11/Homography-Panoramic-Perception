@@ -5,10 +5,11 @@ This project implements augmented reality techniques using planar homographies. 
 
 For a panoramic view enhancement, here are few examples of implementation:
 ![Example Image](images/cliff_pano.png "A Cliff expanded from just 80 degrees to almost 180 degrees of Viewing angle")
-![Example Image](images/cmu pano.png "Expanded view of Carnegie Mellon University")
+![Example Image](images/cmupano.png "Expanded view of Carnegie Mellon University")
 ![Example Image](images/mountpano.png)
 
 And the preliminary matching for this image occurs like this:
+
 ![Example Image](images/mount_match.png)
 
 By making adjustments to the way the program handles rotations in the image, rotation invariance can be handled
