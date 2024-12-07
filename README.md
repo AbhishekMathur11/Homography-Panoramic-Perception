@@ -12,7 +12,11 @@ And the preliminary matching for this image occurs like this:
 
 ![Example Image](images/mount_match.png)
 
-By making adjustments to the way the program handles rotations in the image, rotation invariance can be handled
+For simple objects like two separate books, we can warp the cover of one book onto the other using these matches as seen below:
+
+![Example Image](images/book_misp.png "This is preliminary setup")
+![Example Image](images/book_p.png "This is the result after applying the homography impression")
+By making adjustments to the way the program handles rotations in the image, rotation invariance can be included
 ![Example Image](images/rot_match.png)
 
 ## Overview
